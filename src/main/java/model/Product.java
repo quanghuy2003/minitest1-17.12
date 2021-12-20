@@ -1,10 +1,7 @@
 package model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Product {
@@ -17,6 +14,12 @@ public class Product {
     private int price;
 
     public Product() {
+    }
+
+    public Product(Long id, String name, int price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
 
     public Long getId() {

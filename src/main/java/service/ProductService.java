@@ -32,4 +32,14 @@ public class ProductService  implements IProductService{
     public void remove(Long id) {
         iProductRepository.deleteById(id);
     }
+
+    @Override
+    public Iterable<Product> findByName(String name) {
+        return iProductRepository.findByName(name);
+    }
+
+    @Override
+    public Iterable<Product> orderByName() {
+        return iProductRepository.orderByName();
+    }
 }

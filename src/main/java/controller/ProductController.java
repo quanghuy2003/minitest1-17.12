@@ -5,10 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import service.IProductService;
-import service.ProductService;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -19,7 +18,7 @@ public class ProductController {
     private IProductService productService;
 
     @GetMapping("/create")
-    public String showFormCreate() {
+    public String showFormCreate()   {
         return "/create";
     }
 
@@ -30,9 +29,17 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public String showList(Model model) {
-        Iterable<Product> productIterable = productService.findAll();
-        model.addAttribute("products", productIterable);
+    public String showList(Model model,String key) {
+//        Iterable<Product> productIterable = productService.findAll();
+//        model.addAttribute("products", productIterable);
+//        return "/list";
+        List<Product> productList;
+        if (key!= null){
+            productList= (List<Product>) productService.findByName(key);
+        }else {
+            productList= (List<Product>) productService.findAll();
+        }
+        model.addAttribute("products",productList);
         return "/list";
     }
 
