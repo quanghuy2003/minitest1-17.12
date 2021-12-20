@@ -65,4 +65,12 @@ public class ProductController {
         productService.save(product);
         return "redirect:/products";
     }
+
+    @GetMapping("sort")
+    public String showSort(Model model,String key){
+        List<Product> productList;
+            productList= (List<Product>) productService.findAllByOrderByName();
+            model.addAttribute("product",productList);
+            return "/list";
+    }
 }

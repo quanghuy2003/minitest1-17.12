@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IProductRepository extends JpaRepository<Product, Long> {
     Iterable<Product> findByName (String name);
-    Iterable<Product> orderByName ();
+    Iterable<Product> findAllByOrderByName();
 }

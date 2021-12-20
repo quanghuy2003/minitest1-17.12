@@ -33,13 +33,14 @@ public class ProductService  implements IProductService{
         iProductRepository.deleteById(id);
     }
 
+
     @Override
     public Iterable<Product> findByName(String name) {
         return iProductRepository.findByName(name);
     }
 
     @Override
-    public Iterable<Product> orderByName() {
-        return iProductRepository.orderByName();
+    public Iterable<Product> findAllByOrderByName() {
+        return iProductRepository.findAllByOrderByName();
     }
 }
